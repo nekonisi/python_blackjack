@@ -5,6 +5,7 @@ from Dealer import Dealer
 from Player import Player
 from interface.human import Human
 from Const import *
+import sys
 
 '''
 =============
@@ -28,7 +29,7 @@ def command():
             player.stand()
             break
         elif ans == 'q':
-            exit
+            sys.exit()
         else:
             print("invalid answer! die!")
         player.show_hand()

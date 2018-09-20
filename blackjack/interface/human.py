@@ -1,6 +1,6 @@
 # coding=utf8
-from abc import abstractmethod
 from Deck import Deck
+from abc import abstractmethod
 
 """
 ==========
@@ -16,6 +16,23 @@ class Human(object):
         self._score = 0
         self._hand = list()
 
+    def count_score(self):
+        self._score = 0
+        for card in self._hand:
+            if card.get_number() > 10:
+                self._score += 10
+                return
+
+            if card.get_number() == 1:
+                if self._score > 10:
+                    self._score += 1
+                    return
+                else:
+                    self._score += 11
+                    return
+
+            self._score += card.get_number()
+
     @abstractmethod
     def greet(self):
         pass
@@ -23,17 +40,8 @@ class Human(object):
     def hit(self, deck: Deck) -> bool:
         print(self._name + ": hit")
         self._hand.append(deck.pop())
-        score = self._hand[-1].get_number()
 
-        if score > 10:
-            score = 10
-
-        # If Draw Card is Ace
-        if score == 1:
-            if self._score < 11:
-                score = 11
-
-        self._score += score
+        self.count_score()
 
         if self._score > 21:
             print('Busted!')

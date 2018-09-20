@@ -49,7 +49,7 @@ class Dealer(Human):
 
     def __show_score(self, flg: bool) -> bool:
         if flg:
-            score = self._score - self._hand[-1].get_number()
+            score = self._score
             print('(' + str(score) + ')')
         else:
             print('(' + str(self._score) + ')')
