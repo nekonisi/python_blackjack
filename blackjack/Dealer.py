@@ -36,15 +36,6 @@ class Dealer(Human):
         else:
             print('Dealer: OK! {} Let\'s play game'.format(player.get_name()))
 
-    def hit(self, deck: Deck):
-        super().hit(deck)
-
-    def stand(self, deck: Deck):
-        super().stand()
-
-    def first_draw(self, deck: Deck):
-        super().first_draw(deck)
-
     def show_hand(self, flg: bool):
         print(self._name + ': My hand is ', end=' ')
 
@@ -68,5 +59,5 @@ class Dealer(Human):
             self.hit(deck)
             return True
         else:
-            self.stand(deck)
+            self.stand()
             return False
